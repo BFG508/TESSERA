@@ -1,6 +1,6 @@
-function [tSec, qWm2] = loadHeatFlux(fileName, scaleFactor)
+function [tSec, qWm2] = loadHeatflux(fileName, scaleFactor)
 %==========================================================================
-% loadHeatFlux: Reads thermal heat-flux from a spreadsheet-like file
+% loadHeatflux: Reads thermal heat-flux from a spreadsheet-like file
 %               [t(s), q(W/m^2)] and applies a scale factor. If the file
 %               does not exist, a smooth synthetic profile is generated.
 %
@@ -24,12 +24,13 @@ function [tSec, qWm2] = loadHeatFlux(fileName, scaleFactor)
         scaleFactor = 1;
     end
 
+    fileName = ['.\Heatflux\', fileName];
     if exist(fileName, 'file') == 2
         data = readmatrix(fileName);
 
         % Basic shape check (expect at least two columns)
         if isempty(data) || size(data,2) < 2
-            warning('loadHeatFlux:InvalidData', ...
+            warning('loadHeatflux:InvalidData', ...
                 'File "%s" has insufficient numeric data. Generating synthetic profile.', fileName);
             tSec = linspace(0,250,600).';
             qWm2 = scaleFactor * ( 5e4 * exp(-((tSec-60)./20).^2) ...
@@ -52,7 +53,7 @@ function [tSec, qWm2] = loadHeatFlux(fileName, scaleFactor)
         end
 
     else
-        warning('loadHeatFlux:FileNotFound', ...
+        warning('loadHeatflux:FileNotFound', ...
             'File "%s" not found. Generating synthetic heat flux.', fileName);
 
         tSec = linspace(0,250,600).';
