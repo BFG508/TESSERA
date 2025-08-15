@@ -48,8 +48,7 @@ function [tSec, qWm2] = loadHeatflux(fileName, scaleFactor)
         qWm2 = qWm2(idx);
 
         if tSec(1) > 0
-            tSec = [0; tSec];
-            qWm2 = [qWm2(1); qWm2];
+            tSec = tSec - tSec(1);
         end
 
     else

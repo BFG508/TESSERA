@@ -1,6 +1,6 @@
 function TPS = betaTPS()
 %==========================================================================
-% alfaTPS: Build a ready-to-run config for transientConduction_multilayer
+% betaTPS: Build a ready-to-run config for transientConduction_multilayer
 %
 % Purpose:
 %   Provide a minimal, self-contained configuration (layers, time vector,

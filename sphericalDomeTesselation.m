@@ -15,7 +15,7 @@
 %   l1, l2        - Number of sides for polygon types (integers >= 3).
 %                   If num_poligonos == 1, l2 is ignored (set l2 = l1).
 %   mode          - Size mode:
-%                     1 -> control by geodesic EDGE length (a_edge_sph, m)
+%                     1 -> control by geodesic edge length (a_edge_sph, m)
 %                     2 -> control by target number of tiles (N_target)
 %   a_edge        - Desired geodesic edge length (m). Used only if mode == 1.
 %   N_target      - Approximate target number of tiles. Used only if mode == 2.
@@ -25,12 +25,6 @@
 % Outputs:
 %   - Figure with the dome and tessellated polygons.
 %   - Console report with spherical coverage, effective counts, and sizes.
-%
-% Quick-start examples:
-%   % Edge mode:
-%   R=1; h=0.4; num_poligonos=2; l1=6; l2=5; mode=1; a_edge_sph=0.12; N_target=[];
-%   % Target N mode:
-%   R=1; h=0.4; num_poligonos=1; l1=6; l2=l1; mode=2; a_edge_sph=[]; N_target=220;
 %==========================================================================
 
 clc; clear; close all;
@@ -38,14 +32,14 @@ clc; clear; close all;
 %% =========================== User Inputs ================================
 fprintf('\n=== Input parameters ===\n');
 
-R = input('R (Sphere Radius, m, >0): ');
-h = input('h (Dome Height, m, 0 < h <= R): ');
+R = input('Sphere Radius (> 0): ');
+h = input('Dome Height (0 < h <= R): ');
 
 polygonNumber = input('Number of Polygon Types (1 or 2): ');
-l1 = input('l1 (Sides of Polygon 1, integer >= 3): ');
+l1 = input('Sides of Polygon 1 (>= 3): ');
 
 if polygonNumber == 2
-    l2 = input('l2 (Sides of Polygon 2, integer >= 3): ');
+    l2 = input('Sides of Polygon 2 (>= 3): ');
 else
     % If there is only one type, l2 = l1 (ignored in the rest of the code)
     l2 = l1;
@@ -54,10 +48,10 @@ end
 mode = input('Size mode [1 = Geodesic edge, 2 = Target number]: ');
 
 if mode == 1
-    a_edge   = input('a_edge (Geodesic edge length, m, >0): ');
+    a_edge   = input('Geodesic edge length (> 0): ');
     N_target = [];
 elseif mode == 2
-    N_target = input('N_target (Target number of tiles, >=1): ');
+    N_target = input('Target number of tiles (>=1): ');
     a_edge   = [];
 else
     % Empty values so the validation block handles the error
@@ -223,8 +217,8 @@ for i = 1:N
 end
 
 axis equal; grid on; view(40, 25);
-title(sprintf('R = %.2f m, h = %.2f m', R, h));
-subtitle(sprintf('Geodesic Edge ≈ %.3f m,  N = %d', a_edge_eff, N_drawn));
+title(sprintf('R = %.2f m, h = %.2f m', R, h), 'Interpreter', 'latex'); 
+subtitle(sprintf('Geodesic Edge = %.3f m,  N = %d', a_edge_eff, N_drawn), 'Interpreter', 'latex'); 
 
 %% ========================= Report ====================================
 cover = 100 * (A_sph_sum) / A_cap;  % True spherical coverage
@@ -232,6 +226,6 @@ cover = 100 * (A_sph_sum) / A_cap;  % True spherical coverage
 fprintf('\n----- Tessellation Summary -----\n');
 fprintf('R = %.2f m, h = %.2f m (Maximum ϕ = %.2f deg)\n', R, h, rad2deg(phi_max));
 fprintf('Types: l₁ = %d sides, l₂ = %d sides\n', l1, l2);
-fprintf('Effective geodesic edge ≈ %.4f m (both types)\n', a_edge_eff);
+fprintf('Effective geodesic edge = %.4f m (both types)\n', a_edge_eff);
 fprintf('Drawn tiles: N = %d  (N₁ = %d, N₂ = %d)\n', N_drawn, N1, N2);
 fprintf('Spherical coverage ≈ %.1f %%\n', cover);
