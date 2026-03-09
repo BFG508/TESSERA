@@ -24,12 +24,14 @@ Developed entirely in **MATLAB** (R2024b), relying on core matrix operations, im
   * Config generators like `alfaTPS.m` and `betaTPS.m` for easy scenario setup.
 
 ## ⚙️ Installation & Usage
-1. **Clone the repository:**
+Since this project is pure MATLAB, there are no complex dependencies to install.
+
+1. **Clone the repository**:
    ```bash
    git clone https://github.com/BFG508/TESSERA.git
 2. **Open MATLAB** and navigate to the cloned `TESSERA` directory.
 3. **Add to Path**: Ensure that all subdirectories (`/Functions`, `/Heatflux`, `/ThermalProtectionSystem`) are added to your MATLAB path to allow the main scripts to access necessary functions and data files. You can do this by right-clicking the `TESSERA` folder in the Current Folder browser and selecting Add to Path > Selected Folders and Subfolders.
 4. **Run Geometric Tessellation**: Execute `sphericalDomeTesselation.m` to generate and visualize the 3D polygon distribution over the spacecraft's forward heat shield.
 5. **Run Thermal Analysis**: 
-* Execute `transientConduction_onelayer.mlx` to evaluate the ablative performance and thickness loss for different initial shield configurations.
-* Execute `transientConduction_multilayer.mlx` (which calls `betaTPS` or `alfaTPS`) to evaluate energy balances and interface temperatures in a stacked TPS.
+  * Execute `transientConduction_onelayer.mlx` to evaluate the ablative performance and thickness loss for different initial shield configurations.
+  * Execute `transientConduction_multilayer.mlx` (which calls `betaTPS` or `alfaTPS`) to evaluate energy balances and interface temperatures in a stacked TPS.
