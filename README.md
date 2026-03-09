@@ -26,7 +26,7 @@ Developed entirely in **MATLAB** (R2024b), relying on core matrix operations, im
 ## ⚙️ Installation & Usage
 1. **Clone the repository:**
    ```bash
-   git clone [https://github.com/BFG508/TESSERA.git](https://github.com/BFG508/TESSERA.git)
+   git clone https://github.com/BFG508/TESSERA.git
 2. **Open MATLAB** and navigate to the cloned `TESSERA` directory.
 3. **Add to Path**: Ensure that all subdirectories (`/Functions`, `/Heatflux`, `/ThermalProtectionSystem`) are added to your MATLAB path to allow the main scripts to access necessary functions and data files.
 4. **Run Geometric Tessellation**: Execute `sphericalDomeTesselation.m` to generate and visualize the 3D polygon distribution over the spacecraft's forward heat shield.
